@@ -1,0 +1,30 @@
+Application URL: https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F
+1.) launch app : chrome/edge/firefox
+ 2.) clear and enter userName
+ 3.) clear and enter password
+ 4.) click on checkbox
+ 5.) get the textValue of loginButton  ---- .getText()
+ 6.) click on Login button
+ 7.) get the application URL and Title ------getTitle()    getCurrentURL()
+ 8.) click on Logout button ------ partialLinkText
+ 9.) get the application URL and Title ------getTitle()    getCurrentURL()
+
+
+public void testCase1()
+    {
+        try{
+driver.findElement(By.xpath(prop.readProp("emailIdTextBox"))).clear();
+driver.findElement(By.xpath(prop.readProp("emailIdTextBox"))).sendKeys("admin@yourstore.com");
+driver.findElement(By.xpath(prop.readProp("passwordTextBox"))).clear();
+driver.findElement(By.xpath(prop.readProp("passwordTextBox"))).sendKeys("admin");
+driver.findElement(By.xpath(prop.readProp("remeberMecheckBox"))).click();
+System.out.println(driver.findElement(By.xpath(prop.readProp("loginButton"))).getText());
+driver.findElement(By.xpath(prop.readProp("loginButton"))).click();
+System.out.println("App URL"+(driver.getCurrentUrl()));
+System.out.println("App URL"+(driver.getTitle()));
+Thread.sleep(2000);
+driver.findElement(By.partialLinkText("Logout")).click();
+        }catch(Exception e){
+Assert.fail("test1 failed "+e.getMessage());
+        }
+    }

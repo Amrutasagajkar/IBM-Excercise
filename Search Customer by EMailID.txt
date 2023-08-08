@@ -1,0 +1,57 @@
+   Search Customer by EMailID
+   Given User Launch Chrome browser
+   When User opens URL "http://admin-demo.nopcommerce.com/login"
+   And User enters Email as "admin@yourstore.com" and Password as "admin"
+   And Click on Login
+   Then User can view Dashboad
+   When User click on customers Menu
+   And click on customers Menu Item
+   And Enter customer EMail   ---- victoria_victoria@nopCommerce.com
+   When Click on search button
+   And close browser
+
+
+
+public class Amazonexample2 {
+
+WebDriver driver;
+    
+    @AfterTest
+    public void closeApp() throws Exception {
+        
+        
+        System.out.println("closing application");
+        Thread.sleep(7000);
+        driver.close();   //------- close current browser instance
+        //driver.quit();  //------- close all browser instance
+      
+        
+    }
+    
+            
+    @BeforeTest
+    public void launchApp() throws Exception {
+        
+        
+        
+    	System.setProperty("webdriver.edge.driver", "C:\\Users\\063440744\\Documents\\msedgedriver.exe");
+
+		// Start Edge Session
+		   WebDriver driver = new EdgeDriver();
+		   driver.manage().window().maximize();
+            Thread.sleep(5000);
+           driver.get("http://admin-demo.nopcommerce.com/login");
+           driver.findElement(By.xpath("//*[@id=\"Email\"]")).clear();
+           driver.findElement(By.xpath("//*[@id=\"Email\"]")).sendKeys("admin@yourstore.com");
+           driver.findElement(By.xpath("//*[@id=\"Password\"]")).clear();
+           driver.findElement(By.xpath("//*[@id=\"Password\"]")).sendKeys("admin");
+           driver.findElement(By.xpath("//*[@id=\"RememberMe\"]")).click();
+           driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/div[2]/div[1]/div/form/div[3]/button")).click();
+           driver.findElement(By.xpath("/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/a")).click();
+           driver.findElement(By.xpath("/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/ul/li[1]/a")).click();
+           driver.findElement(By.id("SearchEmail")).sendKeys("victoria_victoria@nopCommerce.com");
+           driver.findElement(By.id("search-customers")).click();
+   	       driver.quit();
+            }
+    
+    

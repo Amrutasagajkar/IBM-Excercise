@@ -1,0 +1,23 @@
+package Day2;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+public class Amazonexample {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		// Set the driver path
+		 System.setProperty("webdriver.edge.driver", "C:\\Users\\063440744\\Documents\\msedgedriver.exe");
+
+		// Start Edge Session
+		   WebDriver driver = new EdgeDriver();
+		   driver.manage().window().maximize();
+		   driver.get("https://www.amazon.com/");
+		   driver.navigate().refresh();
+		   Thread.sleep(9000);
+		   driver.findElement(By.linkText("See more")).click();
+		   
+}
+}
